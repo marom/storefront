@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+npm-debug.log*
+Dockerfile
+.dockerignore
+*.md
+.claude
+.vscode
+.playwright-mcp
+*.png
+coverage
+.DS_Store
