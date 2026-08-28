@@ -11,13 +11,15 @@ export default async function NewProductPage() {
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div>
-        <Link href="/admin/products" className="text-sm text-zinc-500 hover:underline">
+        <Link href="/admin/products" className="text-sm text-ink-soft hover:text-lilac-deep">
           ← Back to products
         </Link>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight">New product</h1>
+        <h1 className="mt-2 text-3xl">New product</h1>
       </div>
       <ProductForm categories={categories} />
-      <p className="text-xs text-zinc-400">Save the product first, then add pictures on its edit page.</p>
+      <p className="text-xs text-ink-soft">
+        Save the product first, then add pictures on its edit page.
+      </p>
     </div>
   );
 }

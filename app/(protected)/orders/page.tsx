@@ -10,7 +10,7 @@ export default async function OrdersPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold tracking-tight">Orders</h1>
+      <h1 className="text-3xl">Your orders</h1>
       {orders.length === 0 ? (
         <EmptyState
           title="No orders yet"

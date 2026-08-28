@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { inputClasses } from "@/components/ui/Field";
 
 /** Reads/writes `?q=` and `?sort=`; the server component does the actual filtering. */
 export function ProductSearchBar() {
@@ -15,11 +16,8 @@ export function ProductSearchBar() {
     if (isDefault) next.delete(key);
     else next.set(key, value);
     const query = next.toString();
-    router.replace(query ? `/?${query}` : "/", { scroll: false });
+    router.replace(query ? `/?${query}#shop` : "/#shop", { scroll: false });
   }
-
-  const field =
-    "rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900";
 
   return (
     <div className="flex flex-col gap-3 sm:flex-row">
@@ -27,15 +25,15 @@ export function ProductSearchBar() {
         type="search"
         defaultValue={q}
         onChange={(e) => update("q", e.target.value)}
-        placeholder="Search products"
+        placeholder="Search the shop"
         aria-label="Search products"
-        className={`w-full ${field}`}
+        className={`${inputClasses} rounded-full`}
       />
       <select
         value={sort}
         onChange={(e) => update("sort", e.target.value)}
         aria-label="Sort products"
-        className={field}
+        className={`${inputClasses} rounded-full sm:w-56`}
       >
         <option value="featured">Featured</option>
         <option value="price-asc">Price: low to high</option>

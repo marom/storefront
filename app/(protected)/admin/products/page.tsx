@@ -13,8 +13,9 @@ export default async function AdminProductsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Manage products</h1>
-          <p className="text-sm text-zinc-500">
+          <p className="eyebrow">Admin</p>
+          <h1 className="mt-1 text-3xl">Manage products</h1>
+          <p className="mt-1 text-sm text-ink-soft">
             {products.length} product{products.length === 1 ? "" : "s"}
           </p>
         </div>

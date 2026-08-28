@@ -1,13 +1,15 @@
 import type { ButtonHTMLAttributes } from "react";
 
 const base =
-  "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0";
 
 const variants = {
   primary:
-    "bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200",
+    "bg-ink text-cream shadow-soft hover:bg-lilac-deep hover:-translate-y-0.5 active:translate-y-0",
   outline:
-    "border border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800",
+    "border-2 border-ink text-ink hover:bg-ink hover:text-cream hover:-translate-y-0.5 active:translate-y-0",
+  pill:
+    "bg-lilac text-ink hover:bg-lilac-deep hover:text-white hover:-translate-y-0.5 active:translate-y-0",
 } as const;
 
 export type ButtonVariant = keyof typeof variants;

@@ -2,7 +2,7 @@ export function Stars({ rating, className = "" }: { rating: number; className?: 
   const rounded = Math.round(rating);
   return (
     <span
-      className={`inline-flex text-amber-500 ${className}`}
+      className={`inline-flex text-butter ${className}`}
       aria-label={`${rating.toFixed(1)} out of 5`}
     >
       {Array.from({ length: 5 }).map((_, i) => (

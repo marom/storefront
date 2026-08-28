@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/Button";
+import { Sparkle } from "@/components/ui/decor/Sparkle";
 
 export default function Error({
   error,
@@ -15,9 +16,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="mx-auto max-w-md space-y-4 py-16 text-center">
-      <h2 className="text-lg font-semibold">Something went wrong</h2>
-      <p className="text-sm text-zinc-500">
+    <div className="mx-auto max-w-md space-y-4 py-20 text-center">
+      <Sparkle className="mx-auto h-7 w-7 text-lilac-deep" />
+      <h2 className="text-2xl">Something went sideways</h2>
+      <p className="text-sm text-ink-soft">
         {error.message || "An unexpected error occurred."}
       </p>
       <Button onClick={() => retry()}>Try again</Button>

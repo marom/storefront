@@ -42,3 +42,6 @@ next-env.d.ts
 
 # playwright-mcp screenshot/session cache
 .playwright-mcp/
+
+# local Claude Code permissions/settings
+.claude/

@@ -4,9 +4,7 @@ import { useState, useTransition, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { registerAction } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/Button";
-
-const field =
-  "w-full rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+import { inputClasses } from "@/components/ui/Field";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -49,7 +47,7 @@ export function RegisterForm() {
           placeholder="First name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className={field}
+          className={inputClasses}
         />
         <input
           required
@@ -57,7 +55,7 @@ export function RegisterForm() {
           placeholder="Last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          className={field}
+          className={inputClasses}
         />
       </div>
       <input
@@ -67,7 +65,7 @@ export function RegisterForm() {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className={field}
+        className={inputClasses}
       />
       <input
         required
@@ -77,23 +75,23 @@ export function RegisterForm() {
         placeholder="Password (min 8 characters)"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className={field}
+        className={inputClasses}
       />
       <input
         autoComplete="tel"
         placeholder="Phone (optional)"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        className={field}
+        className={inputClasses}
       />
       <textarea
         rows={2}
         placeholder="Address (optional)"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        className={field}
+        className={inputClasses}
       />
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-danger">{error}</p>}
       <Button type="submit" className="w-full" disabled={pending}>
         {pending ? "Creating account…" : "Create account"}
       </Button>

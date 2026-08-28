@@ -2,23 +2,24 @@
 
 import { useCart } from "@/lib/cart/CartContext";
 import { Money } from "@/components/ui/Money";
+import { Card } from "@/components/ui/Card";
 
 export function CartSummary() {
   const { subtotal, itemCount } = useCart();
 
   return (
-    <div className="space-y-2 rounded-lg border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+    <Card className="space-y-2 text-sm">
       <div className="flex justify-between">
-        <span className="text-zinc-500">Items</span>
+        <span className="text-ink-soft">Items</span>
         <span>{itemCount}</span>
       </div>
-      <div className="flex justify-between font-semibold">
+      <div className="flex justify-between text-base font-semibold">
         <span>Subtotal</span>
         <Money value={subtotal} />
       </div>
-      <p className="text-xs text-zinc-400">
+      <p className="text-xs text-ink-soft">
         The final total is calculated by the API when you place the order.
       </p>
-    </div>
+    </Card>
   );
 }

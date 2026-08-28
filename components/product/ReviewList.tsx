@@ -5,7 +5,7 @@ import { ReviewItem } from "./ReviewItem";
 export function ReviewList({ reviews }: { reviews: ReviewResponse[] }) {
   if (reviews.length === 0) {
     return (
-      <p className="text-sm text-zinc-500">
+      <p className="text-sm text-ink-soft">
         No reviews yet. Be the first to review this product.
       </p>
     );
@@ -17,8 +17,8 @@ export function ReviewList({ reviews }: { reviews: ReviewResponse[] }) {
     <div className="space-y-4">
       <div className="flex items-center gap-2 text-sm">
         <Stars rating={average} />
-        <span className="font-medium">{average.toFixed(1)}</span>
-        <span className="text-zinc-500">
+        <span className="font-semibold">{average.toFixed(1)}</span>
+        <span className="text-ink-soft">
           ({reviews.length} review{reviews.length === 1 ? "" : "s"})
         </span>
       </div>

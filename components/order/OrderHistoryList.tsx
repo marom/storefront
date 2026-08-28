@@ -3,7 +3,7 @@ import { OrderHistoryRow } from "./OrderHistoryRow";
 
 export function OrderHistoryList({ orders }: { orders: OrderResponse[] }) {
   return (
-    <ul className="divide-y divide-zinc-100 rounded-lg border border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
+    <ul className="divide-y divide-line overflow-hidden rounded-3xl bg-surface shadow-soft">
       {orders.map((order) => (
         <OrderHistoryRow key={order.id} order={order} />
       ))}

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { buttonClasses } from "@/components/ui/Button";
+import { Sparkle } from "@/components/ui/decor/Sparkle";
 
 export function EmptyCart() {
   return (
-    <div className="space-y-4 rounded-lg border border-dashed border-zinc-300 p-12 text-center dark:border-zinc-700">
-      <p className="text-sm text-zinc-500">Your cart is empty.</p>
+    <div className="space-y-4 rounded-3xl bg-lilac/15 p-14 text-center">
+      <Sparkle className="mx-auto h-6 w-6 text-lilac-deep" />
+      <p className="font-display text-lg">Your cart is empty</p>
       <Link href="/" className={buttonClasses()}>
         Browse products
       </Link>

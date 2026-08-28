@@ -4,9 +4,8 @@ import { useState, useTransition, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { submitReviewAction } from "@/lib/actions/reviews";
 import { Button } from "@/components/ui/Button";
-
-const field =
-  "rounded-md border border-zinc-300 px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+import { Card } from "@/components/ui/Card";
+import { inputClasses } from "@/components/ui/Field";
 
 export function ReviewForm({
   productId,
@@ -39,46 +38,45 @@ export function ReviewForm({
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-3 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800"
-    >
-      <h3 className="text-sm font-semibold">Write a review</h3>
-      <p className="text-xs text-zinc-500">Posting as {reviewerEmail}</p>
+    <Card>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <h3 className="font-display text-lg">Write a review</h3>
+        <p className="text-xs text-ink-soft">Posting as {reviewerEmail}</p>
 
-      <div className="flex items-center gap-2">
-        <label className="text-sm text-zinc-500" htmlFor="rating">
-          Rating
-        </label>
-        <select
-          id="rating"
-          value={rating}
-          onChange={(e) => setRating(Number(e.target.value))}
-          className={field}
-        >
-          {[5, 4, 3, 2, 1].map((n) => (
-            <option key={n} value={n}>
-              {n}
-            </option>
-          ))}
-        </select>
-      </div>
+        <div className="flex items-center gap-2">
+          <label className="text-sm text-ink-soft" htmlFor="rating">
+            Rating
+          </label>
+          <select
+            id="rating"
+            value={rating}
+            onChange={(e) => setRating(Number(e.target.value))}
+            className={`${inputClasses} w-auto rounded-full`}
+          >
+            {[5, 4, 3, 2, 1].map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <textarea
-        required
-        rows={3}
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        placeholder="Share your thoughts"
-        className={`w-full ${field}`}
-      />
+        <textarea
+          required
+          rows={3}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Share your thoughts"
+          className={inputClasses}
+        />
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
-      {message && <p className="text-sm text-green-600">{message}</p>}
+        {error && <p className="text-sm text-danger">{error}</p>}
+        {message && <p className="text-sm text-lilac-deep">{message}</p>}
 
-      <Button type="submit" disabled={pending}>
-        {pending ? "Submitting…" : "Submit review"}
-      </Button>
-    </form>
+        <Button type="submit" disabled={pending}>
+          {pending ? "Submitting…" : "Submit review"}
+        </Button>
+      </form>
+    </Card>
   );
 }
