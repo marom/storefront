@@ -36,10 +36,8 @@ export default async function OrderPage({
       ) : (
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Order {order.orderNumber}
-            </h1>
-            <p className="text-sm text-zinc-500">{formatDate(order.createdAt)}</p>
+            <h1 className="text-3xl">Order {order.orderNumber}</h1>
+            <p className="text-sm text-ink-soft">{formatDate(order.createdAt)}</p>
           </div>
           <OrderStatusBadge status={order.status} />
         </div>

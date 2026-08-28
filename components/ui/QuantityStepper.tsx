@@ -16,22 +16,22 @@ export function QuantityStepper({
   const cap = max && max > 0 ? max : undefined;
 
   return (
-    <div className="inline-flex items-center rounded-md border border-zinc-300 dark:border-zinc-700">
+    <div className="inline-flex items-center rounded-full border-2 border-line">
       <button
         type="button"
         onClick={() => onChange(Math.max(min, value - 1))}
         disabled={disabled || value <= min}
-        className="px-2 py-1 text-sm disabled:opacity-40"
+        className="rounded-l-full px-3 py-1.5 text-sm hover:bg-lilac/20 disabled:opacity-40 disabled:hover:bg-transparent"
         aria-label="Decrease quantity"
       >
         &minus;
       </button>
-      <span className="min-w-8 text-center text-sm tabular-nums">{value}</span>
+      <span className="min-w-9 text-center text-sm font-semibold tabular-nums">{value}</span>
       <button
         type="button"
         onClick={() => onChange(cap ? Math.min(cap, value + 1) : value + 1)}
         disabled={disabled || (cap !== undefined && value >= cap)}
-        className="px-2 py-1 text-sm disabled:opacity-40"
+        className="rounded-r-full px-3 py-1.5 text-sm hover:bg-lilac/20 disabled:opacity-40 disabled:hover:bg-transparent"
         aria-label="Increase quantity"
       >
         +

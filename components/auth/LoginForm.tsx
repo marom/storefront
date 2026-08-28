@@ -4,9 +4,7 @@ import { useState, useTransition, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { loginAction } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/Button";
-
-const field =
-  "w-full rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900";
+import { inputClasses } from "@/components/ui/Field";
 
 export function LoginForm() {
   const router = useRouter();
@@ -38,7 +36,7 @@ export function LoginForm() {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className={field}
+        className={inputClasses}
       />
       <input
         required
@@ -47,9 +45,9 @@ export function LoginForm() {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className={field}
+        className={inputClasses}
       />
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-danger">{error}</p>}
       <Button type="submit" className="w-full" disabled={pending}>
         {pending ? "Signing in…" : "Sign in"}
       </Button>

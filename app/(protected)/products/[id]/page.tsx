@@ -27,15 +27,15 @@ export default async function ProductPage({
   });
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-14">
       <ProductDetail product={product} />
       <section className="space-y-6">
-        <h2 className="text-xl font-semibold tracking-tight">Reviews</h2>
+        <h2 className="text-2xl">Reviews</h2>
         <ReviewList reviews={reviews} />
         {session.role === "ROLE_CUSTOMER" ? (
           <ReviewForm productId={product.id} reviewerEmail={session.email} />
         ) : (
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-ink-soft">
             Only customer accounts can post reviews.
           </p>
         )}

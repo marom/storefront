@@ -6,6 +6,7 @@ import type { ProductPictureResponse } from "@/lib/api/types";
 import { deletePictureAction, uploadPicturesAction } from "@/lib/actions/admin-products";
 import { publicAssetUrl } from "@/lib/assets";
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 
 export function ProductPicturesManager({
   productId,
@@ -55,11 +56,11 @@ export function ProductPicturesManager({
   }
 
   return (
-    <section className="space-y-4">
-      <h2 className="text-lg font-semibold tracking-tight">Pictures</h2>
+    <Card as="section" className="space-y-4">
+      <h2 className="font-display text-xl">Pictures</h2>
 
       {pictures.length === 0 ? (
-        <p className="text-sm text-zinc-500">No pictures yet.</p>
+        <p className="text-sm text-ink-soft">No pictures yet.</p>
       ) : (
         <ul className="grid grid-cols-3 gap-3 sm:grid-cols-4">
           {pictures.map((picture) => (
@@ -68,13 +69,13 @@ export function ProductPicturesManager({
               <img
                 src={publicAssetUrl(picture.url)}
                 alt={picture.altText ?? ""}
-                className="aspect-square w-full rounded-lg border border-zinc-200 object-cover dark:border-zinc-800"
+                className="aspect-square w-full rounded-2xl bg-lilac/15 object-cover"
               />
               <button
                 type="button"
                 onClick={() => handleDelete(picture)}
                 disabled={pending}
-                className="text-xs text-red-600 hover:underline disabled:opacity-50"
+                className="text-xs text-danger hover:underline disabled:opacity-50"
               >
                 Delete
               </button>
@@ -89,13 +90,13 @@ export function ProductPicturesManager({
           type="file"
           accept="image/png,image/jpeg,image/webp"
           multiple
-          className="block text-sm"
+          className="block w-full text-sm text-ink-soft file:mr-3 file:rounded-full file:border-0 file:bg-lilac/40 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-ink"
         />
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm text-danger">{error}</p>}
         <Button type="submit" variant="outline" disabled={pending}>
           {pending ? "Uploading…" : "Upload pictures"}
         </Button>
       </form>
-    </section>
+    </Card>
   );
 }

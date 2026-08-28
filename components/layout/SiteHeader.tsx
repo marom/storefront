@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { logoutAction } from "@/lib/actions/auth";
+import { Sparkle } from "@/components/ui/decor/Sparkle";
 import { CartCountBadge } from "./CartCountBadge";
+
+const navLink = "text-sm font-medium text-ink-soft transition-colors hover:text-lilac-deep";
 
 export function SiteHeader({
   userEmail,
@@ -10,35 +13,43 @@ export function SiteHeader({
   isAdmin?: boolean;
 }) {
   return (
-    <header className="border-b border-zinc-200 dark:border-zinc-800">
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Storefront
+    <header className="sticky top-0 z-40 border-b border-line bg-cream/85 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-4">
+        <Link href="/" className="flex items-center gap-1.5">
+          <Sparkle className="h-4 w-4 text-lilac-deep" />
+          <span className="font-display text-2xl lowercase tracking-tight">storefront</span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
-          <Link href="/" className="hover:underline">
-            Products
+
+        <nav className="flex items-center gap-7">
+          <Link href="/" className={navLink}>
+            Shop
           </Link>
-          <Link href="/orders" className="hover:underline">
+          <Link href="/orders" className={navLink}>
             Orders
           </Link>
-          <Link href="/cart" className="flex items-center gap-1.5 hover:underline">
+          <Link href="/cart" className={`${navLink} flex items-center gap-1.5`}>
             Cart
             <CartCountBadge />
           </Link>
           {isAdmin && (
-            <Link href="/admin/products" className="hover:underline">
+            <Link href="/admin/products" className={navLink}>
               Admin
             </Link>
           )}
         </nav>
-        <div className="flex items-center gap-3 text-sm">
-          <span className="text-zinc-500">
+
+        <div className="flex items-center gap-3">
+          <span className="hidden text-xs text-ink-soft sm:inline">
             {userEmail}
-            {isAdmin && <span className="ml-1 text-xs uppercase text-amber-600">admin</span>}
+            {isAdmin && (
+              <span className="ml-1 font-semibold uppercase text-lilac-deep">admin</span>
+            )}
           </span>
           <form action={logoutAction}>
-            <button type="submit" className="font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
+            <button
+              type="submit"
+              className="rounded-full border-2 border-line px-4 py-1.5 text-xs font-semibold text-ink transition-colors hover:border-ink"
+            >
               Log out
             </button>
           </form>

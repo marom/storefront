@@ -37,6 +37,7 @@ export function AddToCartButton({
       )}
       <Button
         type="button"
+        variant={added ? "pill" : "primary"}
         className="w-full"
         onClick={handleAdd}
         disabled={disabled}

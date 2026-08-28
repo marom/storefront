@@ -10,23 +10,26 @@ export function ProductCard({ product }: { product: ProductResponse }) {
   const primary = product.pictures[0];
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
+    <div className="group flex flex-col overflow-hidden rounded-3xl bg-surface shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift">
       <Link href={`/products/${product.id}`} className="block">
         {primary ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={publicAssetUrl(primary.url)}
             alt={primary.altText ?? product.name}
-            className="aspect-square w-full bg-zinc-100 object-cover dark:bg-zinc-900"
+            className="aspect-square w-full bg-lilac/15 object-cover"
           />
         ) : (
-          <div className="flex aspect-square items-center justify-center bg-zinc-100 text-3xl font-semibold text-zinc-300 dark:bg-zinc-900 dark:text-zinc-700">
+          <div className="flex aspect-square items-center justify-center bg-lilac/20 font-display text-4xl text-lilac-deep">
             {product.name.slice(0, 1).toUpperCase()}
           </div>
         )}
       </Link>
-      <div className="flex flex-1 flex-col gap-2 p-3">
-        <Link href={`/products/${product.id}`} className="text-sm font-medium hover:underline">
+      <div className="flex flex-1 flex-col gap-2 p-4">
+        <Link
+          href={`/products/${product.id}`}
+          className="font-display text-base transition-colors group-hover:text-lilac-deep"
+        >
           {product.name}
         </Link>
         <div>
@@ -34,7 +37,7 @@ export function ProductCard({ product }: { product: ProductResponse }) {
         </div>
         <div className="mt-auto flex items-center justify-between pt-2">
           <Money value={product.price} className="text-sm font-semibold" />
-          <span className={`text-xs ${outOfStock ? "text-red-600" : "text-zinc-500"}`}>
+          <span className={`text-xs ${outOfStock ? "text-danger" : "text-ink-soft"}`}>
             {outOfStock ? "Out of stock" : `${product.stockQuantity} in stock`}
           </span>
         </div>

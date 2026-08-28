@@ -25,56 +25,56 @@ export function ProductAdminTable({ products }: { products: ProductResponse[] })
 
   return (
     <div className="space-y-3">
-      {error && <p className="text-sm text-red-600">{error}</p>}
-      <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
+      {error && <p className="text-sm text-danger">{error}</p>}
+      <div className="overflow-x-auto rounded-3xl bg-surface shadow-soft">
         <table className="w-full text-sm">
-          <thead className="bg-zinc-50 text-left text-xs uppercase text-zinc-500 dark:bg-zinc-900">
+          <thead className="bg-lilac/15 text-left text-xs uppercase tracking-wide text-ink-soft">
             <tr>
-              <th className="px-4 py-2 font-medium">Product</th>
-              <th className="px-4 py-2 font-medium">SKU</th>
-              <th className="px-4 py-2 text-right font-medium">Price</th>
-              <th className="px-4 py-2 text-right font-medium">Stock</th>
-              <th className="px-4 py-2 font-medium">Status</th>
-              <th className="px-4 py-2 text-right font-medium">Pics</th>
-              <th className="px-4 py-2" />
+              <th className="px-5 py-3 font-semibold">Product</th>
+              <th className="px-5 py-3 font-semibold">SKU</th>
+              <th className="px-5 py-3 text-right font-semibold">Price</th>
+              <th className="px-5 py-3 text-right font-semibold">Stock</th>
+              <th className="px-5 py-3 font-semibold">Status</th>
+              <th className="px-5 py-3 text-right font-semibold">Pics</th>
+              <th className="px-5 py-3" />
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
+          <tbody className="divide-y divide-line">
             {products.map((product) => (
               <tr key={product.id} className={deletingId === product.id ? "opacity-40" : undefined}>
-                <td className="px-4 py-2">
-                  <div className="flex items-center gap-2">
+                <td className="px-5 py-3">
+                  <div className="flex items-center gap-3">
                     {product.pictures[0] ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={publicAssetUrl(product.pictures[0].url)}
                         alt=""
-                        className="h-8 w-8 rounded object-cover"
+                        className="h-9 w-9 rounded-xl object-cover"
                       />
                     ) : (
-                      <span className="flex h-8 w-8 items-center justify-center rounded bg-zinc-100 text-xs text-zinc-400 dark:bg-zinc-800">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lilac/20 font-display text-xs text-lilac-deep">
                         {product.name.slice(0, 1).toUpperCase()}
                       </span>
                     )}
                     <Link
                       href={`/admin/products/${product.id}`}
-                      className="font-medium hover:underline"
+                      className="font-semibold hover:text-lilac-deep"
                     >
                       {product.name}
                     </Link>
                   </div>
                 </td>
-                <td className="px-4 py-2 text-zinc-500">{product.sku}</td>
-                <td className="px-4 py-2 text-right">
+                <td className="px-5 py-3 text-ink-soft">{product.sku}</td>
+                <td className="px-5 py-3 text-right">
                   <Money value={product.price} />
                 </td>
-                <td className="px-4 py-2 text-right tabular-nums">{product.stockQuantity}</td>
-                <td className="px-4 py-2">{product.active ? "Active" : "Inactive"}</td>
-                <td className="px-4 py-2 text-right tabular-nums">{product.pictures.length}</td>
-                <td className="px-4 py-2 text-right whitespace-nowrap">
+                <td className="px-5 py-3 text-right tabular-nums">{product.stockQuantity}</td>
+                <td className="px-5 py-3">{product.active ? "Active" : "Inactive"}</td>
+                <td className="px-5 py-3 text-right tabular-nums">{product.pictures.length}</td>
+                <td className="px-5 py-3 text-right whitespace-nowrap">
                   <Link
                     href={`/admin/products/${product.id}`}
-                    className="text-zinc-600 hover:underline dark:text-zinc-300"
+                    className="text-ink-soft hover:text-lilac-deep"
                   >
                     Edit
                   </Link>
@@ -82,7 +82,7 @@ export function ProductAdminTable({ products }: { products: ProductResponse[] })
                     type="button"
                     onClick={() => handleDelete(product)}
                     disabled={pending}
-                    className="ml-3 text-red-600 hover:underline disabled:opacity-50"
+                    className="ml-4 text-danger hover:underline disabled:opacity-50"
                   >
                     Delete
                   </button>

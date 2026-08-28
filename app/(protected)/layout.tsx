@@ -1,4 +1,5 @@
 import { requireSession } from "@/lib/auth/session";
+import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 
@@ -12,8 +13,9 @@ export default async function ProtectedLayout({
 
   return (
     <>
+      <AnnouncementBar />
       <SiteHeader userEmail={session.email} isAdmin={session.role === "ROLE_ADMIN"} />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">{children}</main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10">{children}</main>
       <SiteFooter />
     </>
   );

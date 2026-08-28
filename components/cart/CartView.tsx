@@ -10,7 +10,7 @@ import { EmptyCart } from "./EmptyCart";
 export function CartView() {
   const { items, hydrated } = useCart();
 
-  if (!hydrated) return <p className="text-sm text-zinc-500">Loading cart…</p>;
+  if (!hydrated) return <p className="text-sm text-ink-soft">Loading cart…</p>;
   if (items.length === 0) return <EmptyCart />;
 
   return (
